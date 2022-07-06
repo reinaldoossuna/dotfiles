@@ -25,7 +25,11 @@ topgrade = "~/.config/topgrade.toml"
 [emacs.files]
 doom = "~/.doom.d"
 
+<<<<<<< variant A
 [sweet-pop.files]
+>>>>>>> variant B
+[sweet-pop.file]
+======= end
 sweet-pop = "~/.mozilla/firefox/qv09m96a.default-release/chrome"
 
 [minimal-ag.file]
