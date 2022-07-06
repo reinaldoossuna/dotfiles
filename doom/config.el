@@ -223,7 +223,7 @@
 ;; (setq centaur-tabs-label-fixed-length 12)
 
 (load! "keybinds.el")
-(load! "pdf-continuous-scroll/config.el")
+;; (load! "pdf-continuous-scroll/config.el")
 (load! "org-mode/config.el")
 
 (require 'org-gcal)
