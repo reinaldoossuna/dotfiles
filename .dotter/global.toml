@@ -24,3 +24,6 @@ topgrade = "~/.config/topgrade.toml"
 
 [emacs.files]
 doom = "~/.doom.d"
+
+[sweet-pop.files]
+sweet-pop = "~/.mozilla/firefox/qv09m96a.default-release/chrome"
