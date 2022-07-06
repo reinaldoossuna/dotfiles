@@ -5,7 +5,8 @@ packages = [
 "vim",
 "topgrade",
 "zsh",
-"emacs"]
+"emacs",
+"sweet-pop"]
 
 [files]
 
