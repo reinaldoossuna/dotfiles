@@ -27,3 +27,6 @@ doom = "~/.doom.d"
 
 [sweet-pop.files]
 sweet-pop = "~/.mozilla/firefox/qv09m96a.default-release/chrome"
+
+[minimal-ag.file]
+minimal-ag = "~/.mozilla/firefox/qv09m96a.default-release/chrome"

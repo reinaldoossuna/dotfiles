@@ -1,3 +1,6 @@
 [submodule "sweet-pop"]
 	path = sweet-pop
 	url = file:///hdd/sweet-pop
+[submodule "minimal-ag"]
+	path = minimal-ag
+	url = file:///hdd/config/firefoxChrome
