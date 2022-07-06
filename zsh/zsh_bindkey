@@ -1,0 +1,7 @@
+bindkey '^Z' foreground-vi
+#bindkey -s '^u' ' ls -lAGh1vX --format=horizontal --group-directories-first --color=auto\n'                # [Ctrl-u] - run command: ls
+#bindkey -s '^y' ' ls -lAGhvX --color=auto\n'                # [Ctrl-u] - run command: ls
+bindkey -s '^o' 'ls\n'                # [Ctrl-u] - run command: ls
+bindkey -s '^u' 'll\n'                # [Ctrl-u] - run command: ls
+bindkey -s '^y' 'la\n'                # [Ctrl-u] - run command: ls
+#bindkey -s '^f' '\nclear && pfetch\n'                # [Ctrl-f] - pfetch

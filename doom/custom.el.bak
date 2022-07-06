@@ -1,0 +1,49 @@
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#2E3440" "#BF616A" "#A3BE8C" "#EBCB8B" "#81A1C1" "#B48EAD" "#88C0D0" "#ECEFF4"])
+ '(custom-safe-themes
+   '("a9a67b318b7417adbedaab02f05fa679973e9718d9d26075c6235b1f0db703c8" "4b0e826f58b39e2ce2829fab8ca999bcdc076dec35187bf4e9a4b938cb5771dc" "8d7b028e7b7843ae00498f68fad28f3c6258eda0650fe7e17bfb017d51d0e2a2" "1704976a1797342a1b4ea7a75bdbb3be1569f4619134341bd5a4c1cfb16abad4" "d6844d1e698d76ef048a53cefe713dbbe3af43a1362de81cdd3aefa3711eae0d" "f302eb9c73ead648aecdc1236952b1ceb02a3e7fcd064073fb391c840ef84bca" "0e2a7e1e632dd38a8e0227d2227cb8849f877dd878afb8219cb6bcdd02068a52" "f65451261f23f770b06f2ea96a9d349c5c7eaec15cc057873010f2f11a4c7229" "20f786e5d7b19abd8d93579a809976f2e477359a64ffdf36c4a07c6875045ece" "81e22639b3ed83056deb9a12313a2937f2008e5e2dc5918c9357e29fe9a3483f" "22c8110ceeade36347426926ae4adac25067743f49354fd04d9d49c051cb5149" "34e89196734641234800804ecdb2c20505e81586b816cc906eb319c377225ff5" "56d10d2b60685d112dd54f4ba68a173c102eacc2a6048d417998249085383da1" "22dadcc3e29840ef054c188b5cfe88c71c3bf77afc58d1c4ff9ab5dd3ef60e9b" default))
+ '(exwm-floating-border-color "#0d0d0d")
+ '(fci-rule-color "#4C566A")
+ '(highlight-tail-colors ((("#2c2e28") . 0) (("#272e30") . 20)))
+ '(jdee-db-active-breakpoint-face-colors (cons "#191C25" "#81A1C1"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#191C25" "#A3BE8C"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#191C25" "#434C5E"))
+ '(objed-cursor-color "#BF616A")
+ '(package-selected-packages
+   '(org-roam-bibtex arduino-mode nov calibredb projectile-ripgrep ripgrep google-c-style))
+ '(pdf-view-midnight-colors (cons "#ECEFF4" "#2E3440"))
+ '(rustic-ansi-faces
+   ["#2E3440" "#BF616A" "#A3BE8C" "#EBCB8B" "#81A1C1" "#B48EAD" "#88C0D0" "#ECEFF4"])
+ '(vc-annotate-background "#2E3440")
+ '(vc-annotate-color-map
+   (list
+    (cons 20 "#A3BE8C")
+    (cons 40 "#bbc28b")
+    (cons 60 "#d3c68b")
+    (cons 80 "#EBCB8B")
+    (cons 100 "#e2b482")
+    (cons 120 "#d99d79")
+    (cons 140 "#D08770")
+    (cons 160 "#c68984")
+    (cons 180 "#bd8b98")
+    (cons 200 "#B48EAD")
+    (cons 220 "#b77f96")
+    (cons 240 "#bb7080")
+    (cons 260 "#BF616A")
+    (cons 280 "#a05b67")
+    (cons 300 "#815664")
+    (cons 320 "#625161")
+    (cons 340 "#4C566A")
+    (cons 360 "#4C566A")))
+ '(vc-annotate-very-old-color nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

@@ -1,0 +1,30 @@
+;;
+;; Nord
+;;
+[nord]
+polarnight1 = #2E3440
+polarnight2 = #3b4252
+polarnight3 = #4334c5e
+polarnight4 = #4C566A
+snowstorm1 = #D8DEE9
+snowstorm2 = #e5e9f0
+snowstorm3 = #eceff4
+frost1 = #8fbcbb
+frost2 = #88c0d0
+frost3 = #81a1c1
+frost4 = #5e81ac
+aurora1 = #8f616a
+aurora2 = #D08770
+aurora3 = #ebcb8b
+aurora4 = #b448ead
+
+[colors]
+background = ${nord.polarnight1}
+dark-gray = ${nord.polarnight2}
+foreground = ${nord.snowstorm1}
+blue = ${nord.frost4}
+green = ${nord.frost1}
+cyan = ${nord.frost2}
+red = ${nord.aurora1}
+orange = ${nord.aurora2}
+yellow = ${nord.aurora3}

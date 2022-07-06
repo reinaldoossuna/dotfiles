@@ -1,0 +1,26 @@
+[bspwm.files]
+bspwmrc = "~/.config/bspwm/bspwmrc"
+sxhkdrc = "~/.config/sxhkd/sxhkdrc"
+
+[polybar-slim.files]
+"polybar/config-slim" = "~/.config/polybar/config-slim"
+"polybar/launch-slim.sh" = "~/.config/polybar/launch-slim.sh"
+"polybar/module-slim" = "~/.config/polybar/module-slim"
+"polybar/colors" = "~/.config/polybar/colors"
+
+[zsh.files]
+"zsh/zshrc"        = "~/.zshrc"
+"zsh/zsh_aliases"  = "~/.zsh_aliases"
+"zsh/zsh_bindkey"  = "~/.zsh_bindkey"
+"zsh/zsh_plugins"  = "~/.zsh_plugins"
+"zsh/zsh_profile"  = "~/.zsh_profile"
+
+[vim.files]
+"vim/plugins.vim" = "~/.vim/plugins.vim"
+"vim/vimrc" = "~/.vim/vimrc"
+
+[topgrade.files]
+topgrade = "~/.config/topgrade.toml"
+
+[emacs.files]
+doom = "~/.doom.d"

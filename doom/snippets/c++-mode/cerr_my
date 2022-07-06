@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: cerr_my
+# uuid: err
+# key: err
+# --
+std::cerr << $1 <<$2 std::endl;

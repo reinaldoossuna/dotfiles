@@ -1,0 +1,37 @@
+export PATH=$PATH:~/.local/bin:~/.cargo/bin
+export EDITOR="/bin/emacs-nw-q.sh"
+export CHROOT=$HOME/chroot
+
+eval "$(zoxide init zsh)"
+
+export AUTO_NOTIFY_THRESHOLD=20
+export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_code"
+AUTO_NOTIFY_IGNORE+=("docker" "bluetoothctl")
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+MODE_CURSOR_VIINS=" blinking bar"
+MODE_CURSOR_REPLACE="$MODE_CURSOR_VIINS #ff0000"
+MODE_CURSOR_VICMD="green block"
+MODE_CURSOR_SEARCH=" steady underline"
+MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD steady bar"
+MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
+
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':autocomplete:*' insert-unambiguous yes
+zstyle ':autocomplete:*' widget-style menu-select
+
+setopt automenu
+setopt appendhistory
+setopt sharehistory
+setopt autocd
+setopt vi
+setopt histignorealldups
+setopt histsavenodups
+setopt histreduceblanks
+setopt incappendhistory
+setopt extendedhistory
+setopt nomenucomplete
+setopt no_list_ambiguous

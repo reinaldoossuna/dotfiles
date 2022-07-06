@@ -1,0 +1,194 @@
+let g:python3_host_prog='~/usr/bin/python3.7'
+filetype plugin on
+set mouse=a
+
+" Launching other configs
+exe 'source' '~/.vim/plugins.vim'
+" exe 'source' '~/.vim/colemak.vim'
+
+" change dhe directory on the working file, may cause problems see
+" https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
+set autochdir
+
+set path +=**
+set wildmenu
+set wildmode=longest,list:longest
+set completeopt=longest,menu,preview
+
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
+" ================ Keyboard bindings ================
+
+" Compatible Ctrl C with the pc "
+inoremap <C-v> <ESC>"+pa
+vnoremap <C-v> +pa
+vnoremap <C-c> "+y
+vnoremap <C-d> "+d
+map Y y$
+
+" Easier to navigate throw windows
+noremap <C-n> <C-w>j
+noremap <C-e> <C-w>k
+noremap <C-h> <C-w>h
+noremap <C-i> <C-w>l
+noremap <leader>w <C-w>
+
+let mapleader = " "
+map <leader>S :source ~/.vim/vimrc<cr>
+
+" Save and Exit commands
+"
+map <leader>bs :w!<cr>
+map <leader>bu :w !sudo tee % >/dev/null <cr>
+map <leader>bk :q!<cr>
+map <leader>bK :qa!<cr>
+
+" Make Commands
+" mr - Make and run; The name of the binary must be the same as the current
+" file
+map <leader>cc :AsyncRun export MAKE=gcc % -o %<
+map <leader>cC :AsyncRun $MAKE<CR>
+map <leader>ca :AsyncRun make clean all<CR>
+map <leader>cr :AsyncRun -raw python %
+map <leader>ct :AsyncRun ctags -R –c++-kinds=+p –fields=+iaS –extra=+q .<CR>
+map <leader>op :AsyncRun
+
+" TODO: Git Commands
+map <leader>gs :Gstatus<cr>;
+map <leader>gc :Gcommit<cr>
+
+" Tab commands
+map <leader><TAB>n :tabnew<cr>
+map <leader><TAB>k :tabclose<cr>
+
+" toggle highlighting and Indentation
+nnoremap <leader>th :set hlsearch!<CR>
+nnoremap <leader>ti :IndentGuidesToggle<CR>
+map <leader>tz :Goyo<cr>
+map <leader>tp :NERDTreeToggle<cr>
+map <leader>ot :call ToggleQuickfixList()<CR>
+
+
+" FZF Commands
+nnoremap <silent> <leader><Space> :Files<CR>
+nnoremap <silent>ff :Files ~/<CR>
+nnoremap <silent> <leader>bi :Buffers<CR>
+
+" TODO commands
+" ft - Find TODO
+" et - End TODO
+map <leader>ft /TODO<cr>
+map <leader>et :s/TODO/DONE/gc<cr>
+
+map <leader>qq :qa!
+
+                       
+" ================ Indentation ======================
+
+set autoindent
+set smartindent
+set shiftwidth=2
+set tabstop=2
+set smarttab
+set expandtab
+
+" ================ Searching ========================
+
+" Ignorecase when searching
+set ignorecase
+
+" incremental search - Vim starts searching when we start typing
+set incsearch
+
+" When searching try to be smart about cases
+set smartcase
+
+" Highlight search results
+set nohlsearch
+
+
+" ================ Misc =============================
+
+" If there is a make run "make" ifnot "run g++
+"set makeprg=if\ \[\ -f\ \"Makefile\"\ \];then\ make\ $*;else\ g++\ -o\ %<\ %;fi
+
+" highlight matching braces
+set showmatch
+
+" turn relative line numbers on
+set number relativenumber
+set nu rnu
+
+" highlight matching braces
+set t_Co=256
+
+" Colorsheme
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+set background=dark
+color nord
+
+" ================ FZF =============================
+
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', 'cat {}']}, <bang>0)
+
+" Make Enter select the world
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" ================ Vim - workspace =============================
+
+let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+let g:workspace_session_disable_on_args = 1
+let g:workspace_autosave_always = 1
+let g:workspace_autosave_ignore = ['gitcommit']
+
+" nnn
+"
+let g:nnn#layout = { 'left': '~20%' } " or right, up, down
+
+" Disable default mappings
+let g:nnn#set_default_mappings = 0
+
+" Then set your own
+nnoremap <silent> <leader>nn :NnnPicker<CR>
+
+
+" Start nnn in the current file's directory
+nnoremap <leader>nh :NnnPicker '%:p:h'<CR>"
+
+let g:nnn#action = {
+      \ '<c-t>': 'tab split',
+      \ '<c-x>': 'split',
+      \ '<c-v>': 'vsplit' }
+
+
+" Smooth Scroll commands
+noremap <silent> <c-u> :call smooth_scroll#up(5, 2, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(10, 2, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(10, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(15, 0, 4)<CR>
+

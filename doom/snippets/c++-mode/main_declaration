@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: main_my
+# uuid: main
+# key: main
+# --
+$0
+
+auto main() -> int {
+    $1
+}

@@ -1,0 +1,117 @@
+#! /bin/sh
+
+_bc() {
+  bspc config "$@"
+}
+
+_br() {
+  bspc rule -a "$@"
+}
+
+# Split settings
+_bc automatic_scheme spiral
+_bc initial_polarity second_child
+
+#Various settings
+_bc gapless_monocle     true
+_bc borderless_monocle  true
+_bc single_monocle      true
+#_bc paddingless_monocle true
+_bc remove_disabled_monitors true
+_bc remove_unplugged_monitors true
+
+## Honor size hints: do not make windows smaller than they wish to be
+#_bc honor_size_hints true
+
+##Color settings
+_bc focused_border_color "#5e81ac"
+_bc active_border_color "#88c0d0"
+_bc normal_border_color "#8fbcbb"
+_bc presel_feedback_color "#4c566a"
+
+_bc border_width 2
+_bc window_gap 4
+
+_bc focus_follows_pointer true
+_bc pointer_follows_focus false
+_bc pointer_modifier mod4
+_bc pointer_action1 move
+_bc pointer_action2 resize_side
+_bc pointer_action3 resize_side
+_bc click_to_focus any
+_bc swallow_first_click false
+_bc initial_polarity first_child
+_bc ignore_ewmh_focus true
+
+#Settings for manual splitting
+_bc split_ratio         0.65
+
+#bspc monitor -d i ii iii iv v vi vii viii ix x
+#bspc monitor -d One Two Three Four Five Six Seven Eight Nine Ten
+#bspc monitor -d I II III IV V VI VII VIII IX X
+#bspc monitor -d • • • • • • • • • •
+#bspc monitor -d I II III IV V VI
+
+###This creates and names desktops for multiple monitors.
+workspaces_multimonitor &
+
+#_br conky sticky=on manage=off lower=on
+_br Zathura state=tiled
+_br VirtualBox Machine state=fullscreen
+_br Pympress Content state=fullscreen
+_br Emacs state=fullscreen
+_br feh state=floating
+_br anki state=floating
+_br matplotlib state=floating
+#_br Toolkit state=floating
+#_br Picture-in-Picture state=floating
+_br vlc state=floating
+_br scrcpy state=floating desktop=V rectangle=478x984+1388+39 locked=on
+_br tutanota-desktop state=floating desktop=V rectangle=964x600+34+46 locked=on
+_br whatsapp-nativefier-d40211 state=floating desktop=V rectangle=800x600+560+240 locked=on
+_br Spotify state=floating desktop=V rectangle=1075x600+832+468 locked=on
+_br firefox desktop=VI focus=on follow=on --one-shot
+_br pavucontrol state=floating
+_br Pavucontrol state=floating rectangle=300x200
+_br Clock rectangle=650x390+1388+39 state=floating
+_br vtk state=floating rectangle=700x400+0+0
+_br Opengl state=floating rectangle=700x400+0+0
+_br processing-app-Base state=floating
+
+##  Autogap adjusts windowgap automatically according to the number of
+##  windows on the desktop. Using it disables negative window gap.
+autogap &
+
+##  This script balances all windows when new one is spawned
+#euclid_balancer &
+
+##Edge-switcher switches to next workspace when moves moves to the
+##edge of the monitor (behavior similar to enlightenment)
+#edge-switcher &
+
+###External rules
+##Pseudo automatic mode: always splits focused window when opening new window
+#_bc external_rules_command /usr/bin/pseudo_automatic_mode
+##Adjust new window: splits biggest windows to keep windows about the same size
+#_bc external_rules_command /usr/bin/adjust-new-window
+
+exec ~/.config/bspwm/launch-sxhkd.sh &
+
+nitrogen --restore &
+
+# Launch bars
+exec ~/.config/polybar/launch-slim.sh &
+
+# Caps become escape
+# setxkbmap -option caps:escape &
+
+# Starting cursor
+# xsetroot -cursor_name left_ptr &
+# 
+# dunst &
+#
+#
+
+# exec ~/.config/bspwm/startup_apps &
+/usr/lib/kdeconnectd &
+picom &

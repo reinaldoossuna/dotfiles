@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: function
+# uuid: fn
+# key: fn
+# --
+auto ${1:name}($2) ${3:-> ${4:int}} {
+  $0
+  ${5:return 1;}
+}

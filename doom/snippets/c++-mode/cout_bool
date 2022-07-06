@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: cout_bool
+# uuid: outbool
+# key: outbool
+# --
+
+std::cout << std::boolalpha << $1 <<$2 std::endl;

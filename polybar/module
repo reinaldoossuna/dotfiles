@@ -1,0 +1,215 @@
+;;
+; MODULES
+;;
+
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = true
+
+label-focused = %icon%
+label-focused-background = ${colors.dark-gray}
+label-focused-underline= ${colors.blue}
+label-focused-padding = 1
+
+label-occupied = %icon%
+label-occupied-padding = 1
+label-occupied-background = ${colors.dark-gray}
+label-occupied-underline= ${colors.green}
+
+label-urgent = %name%!
+label-urgent-background = ${colors.yellow}
+label-urgent-padding = 1
+
+label-empty = %icon%
+label-empty-background = ${colors.dark-gray}
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 1
+
+ws-icon-0 = I;
+ws-icon-1 = II;
+ws-icon-2 = III;
+ws-icon-3 = IV;
+ws-icon-4 = V;
+ws-icon-5 = VI;
+ws-icon-6 = VII;
+ws-icon-7 = VIII;  
+ws-icon-8 = IX;
+ws-icon-9 = X;
+ws-icon-default = ♟
+
+label-separator = %{T6}%{T-}
+label-separator-padding = 0
+label-separator-background = ${colors.dark-gray}
+label-separator-foreground = ${colors.foreground}
+
+[module/date]
+type = internal/date
+
+; Seconds to sleep between updates
+interval = 1.0
+
+; See "man date" for details on how to format the date string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+date = %b %d, 
+
+; Optional time format
+time = %H:%M
+
+; if `date-alt` or `time-alt` is defined, clicking
+; the module will toggle between formats
+date-alt = %d %B %Y
+time-alt = %H:%M:%S
+
+label = %date% %time%
+format = <label>
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-padding = 3
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-background = ${colors.background}
+format-underline = ${colors.blue}
+label = "%{A1:~/Documents/scripts/launch_htop:} CPU %percentage:2%%%{A}"
+
+[module/wlan]
+type = internal/network
+interface = wlp60s0
+interval = 3.0
+format-connected = "%{A1:/usr/bin/networkmanager_dmenu:}  %{A}"
+format-connected-underline = ${colors.blue}
+
+[module/eth]
+type = internal/network
+interface = enp59s0
+interval = 3.0
+format-connected-underline = ${colors.blue}
+format-connected = "%{A1:/usr/bin/networkmanager_dmenu:}  %{A}"
+
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${colors.red}
+label-disconnected = "%{A1:/usr/bin/networkmanager_dmenu:}  %{A}"
+
+[module/battery]
+type = internal/battery
+
+full-at = 96
+
+battery = BAT0
+adapter = AC
+
+poll-interval = 5
+
+label-charging = %{T5}  %{T-}
+format-charging = <label-charging>
+format-charging-underline = ${colors.green}
+
+label-discharging = %{T5}  %{T-} %percentage%%
+format-discharging = <label-discharging>
+format-discharging-underline = ${colors.red}
+
+label-full = %{T5}  %{T-}
+label-full-underline = ${colors.blue}
+
+[module/temperature]
+type = internal/temperature
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input
+thermal-zone = 0
+warn-temperature = 75
+format = <label>
+format-underline = ${colors.green}
+format-warn = <label-warn>
+format-warn-underline = ${colors.yellow}
+label = %temperature-c%
+
+[module/powermenu]
+type = custom/script
+click-left = ~/Documents/scripts/powermenu.sh
+
+tail = false
+format-prefix = " "
+format-underline = ${colors.blue}
+exec = echo " "
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${colors.foreground}
+label-muted =  婢
+label-muted-foreground = ${colors.foreground}
+bar-volume-empty-foreground = ${colors.foreground}
+format-muted-underline = ${colors.red}
+format-volume-underline = ${colors.blue}
+
+ramp-volume-0 =  
+ramp-volume-1 =  
+ramp-volume-2 =  
+
+[module/updates]
+type = custom/script
+
+exec = ~/Documents/scripts/updates
+
+tail = true
+
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-underline = ${colors.blue}
+format-padding = 2
+
+click-left = ~/Documents/scripts/launch_update
+
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = ""
+format = <label>
+exec = python ~/Documents/scripts/spotify_status.py -f '{artist}: {song}'
+format-underline = ${colors.blue}
+
+[module/filesystem]
+type = internal/fs
+
+; Mountpoints to display
+mount-0 = /
+mount-1 = /mnt/hdd
+
+; Seconds to sleep between updates
+interval = 30
+
+; Display fixed precision values
+fixed-values = true
+
+label-mounted = %mountpoint%: %percentage_free%% of %total%
+
+[module/polypomo]
+type = custom/script
+
+exec = ~/polypomo/polypomo --breaktime 300
+
+tail = true
+
+label = %output%
+click-left =   ~/polypomo/polypomo toggle
+click-right =  ~/polypomo/polypomo end
+click-middle = ~/polypomo/polypomo lock
+scroll-up =    ~/polypomo/polypomo time +60
+scroll-down =  ~/polypomo/polypomo time -60
+
+[module/taskwarrior]
+
+type = custom/script
+
+exec = ~/Documents/scripts/taskwarrior.sh
+
+tail = true
+
+format-prefix = " "
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-underline = ${colors.blue}
+format-padding = 1
+
+click-left =   python ~/test.py

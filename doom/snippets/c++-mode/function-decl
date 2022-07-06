@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: function
+# uuid: fnn
+# key: fnn
+# --
+auto ${1:name}($2) ${3:-> ${4:int}};

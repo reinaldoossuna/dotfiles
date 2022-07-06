@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: class
+# uuid: cls
+# key: cls
+# --
+class ${1:Name} $2{
+ public:
+  ${1:$(yas/substr yas-text "[^: ]*")}($3)${:$4} {}
+ private:
+  $0
+};

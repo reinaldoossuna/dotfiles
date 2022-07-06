@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/nardo/.cache/paru/clone/python-pluginbase'
+let g:netrw_dirhist_1='/home/nardo/.cache/paru/clone'
+let g:netrw_dirhist_0='/home/nardo/.cache/paru/clone/microchip-mplabxc32-bin/etc/profile.d'
+let g:netrw_dirhist_9='/home/nardo/.cache/paru/clone/microchip-mplabxc32-bin'
+let g:netrw_dirhist_8='/hdd/config/spotify-tui'
+let g:netrw_dirhist_7='/home/nardo/.cache/paru/clone/emacs-native-comp-git-enhanced'
+let g:netrw_dirhist_6='/home/nardo/scripts'
+let g:netrw_dirhist_5='/boot'
+let g:netrw_dirhist_4='/hdd/config/alacritty'
+let g:netrw_dirhist_3='/hdd/Documents/cuda_hello/samples/0_Simple/matrixMul'

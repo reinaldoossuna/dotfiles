@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: static_cast
+# uuid: sc
+# key: sc
+# --
+static_cast<${1:Type}>(${2})

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# group: file templates
+# uuid: header
+# key: hpp
+# --
+#pragma once
+
+$0

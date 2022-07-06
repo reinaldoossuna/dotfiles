@@ -1,0 +1,102 @@
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = true
+
+label-focused = %icon%
+label-focused-background = ${colors.dark-gray}
+label-focused-underline= ${colors.blue}
+label-focused-padding = 30
+
+label-occupied = %icon%
+label-occupied-padding = 30
+label-occupied-background = ${colors.dark-gray}
+label-occupied-underline= ${colors.cyan}
+
+label-urgent = %icon%!
+label-urgent-background = ${colors.yellow}
+label-urgent-padding = 30
+
+label-empty = %icon%
+label-empty-background = ${colors.dark-gray}
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 20
+
+label-separator = " "
+label-separator-padding = 1
+label-separator-background = ${colors.background}
+label-separator-foreground = ${colors.foreground}
+
+ws-icon-default = " "
+
+[module/powermenu]
+type = custom/script
+click-left = ~/.config/rofi/scripts/menu_powermenu.sh
+
+tail = false
+format-prefix = "              "
+format-underline = ${colors.blue}
+exec = echo " "
+
+[module/bspwm-side]
+inherit = module/bspwm
+label-focused-padding = 30
+label-occupied-padding = 30
+label-urgent-padding = 30
+label-empty-padding = 20
+
+[module/battery]
+type = internal/battery
+
+full-at = 96
+
+battery = BAT0
+adapter = AC
+
+poll-interval = 60
+
+label-charging =    "%{A1:~/.config/rofi/scripts/menu_battery.sh:}                   %{A}"
+format-charging = <label-charging>
+format-charging-underline = ${colors.cyan}
+
+label-discharging = "%{A1:~/.config/rofi/scripts/menu_battery.sh:}                   %{A}"
+format-discharging = <label-discharging>
+format-discharging-underline = ${colors.red}
+
+label-full =        "%{A1:~/.config/rofi/scripts/menu_battery.sh:}                   %{A}"
+label-full-underline = ${colors.blue}
+
+[module/wlan]
+type = internal/network
+interface = wlp60s0
+interval = 10.0
+format-connected =  "%{A1:~/.config/rofi/scripts/menu_network.sh:}                   %{A}"
+format-connected-underline = ${colors.blue}
+
+[module/eth]
+type = internal/network
+interface = enp59s0
+interval = 10.0
+format-connected-underline = ${colors.blue}
+format-connected =   "%{A1:~/.config/rofi/scripts/menu_network.sh:}                   %{A}"
+
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${colors.red}
+label-disconnected = "%{A1:~/.config/rofi/scripts/menu_network.sh:}                   %{A}"
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume = <ramp-volume>
+label-volume-foreground = ${colors.foreground}
+label-muted =                                                      "                     "
+label-muted-foreground = ${colors.foreground}
+bar-volume-empty-foreground = ${colors.foreground}
+format-muted-underline = ${colors.red}
+format-volume-underline = ${colors.blue}
+
+ramp-volume-0 =                                                                      "   "
+ramp-volume-1 =                                                                 "        "
+ramp-volume-2 =                                                           "              "
+ramp-volume-3 =                                                    "                     "
+
+click-right = ~/.config/rofi/scripts/menu_volume.sh &
+click-middle = ~/.config/rofi/scripts/menu_volume.sh &

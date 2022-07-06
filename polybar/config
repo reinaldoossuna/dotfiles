@@ -1,0 +1,82 @@
+include-file = ~/.config/polybar/colors
+include-file = ~/.config/polybar/module
+
+[bar/main]
+monitor = ${env:MONITOR:}
+bottom = true
+width = 98%
+height = 38
+radius = 5
+offset-x = 1%
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 2
+border-size = 0
+border-top-size = 2
+border-color = #00000000
+padding-left = 1
+padding-right = 1
+module-margin-left = 1
+module-margin-right = 1
+font-0 = Hack:pixelsize=12;1
+font-1 = Noto Sans Symbols2:pixelsize=14;1
+font-2 = Hack:pixelsize=18;1
+font-3 = Hurmit Nerd Font Mono:pixelsize=20;1
+font-4 = Hurmit Nerd Font Mono:pixelsize=14;1
+font-5 = Hurmit Nerd Font Mono:pixelsize=10;1
+modules-left = bspwm
+modules-center = date
+modules-right = updates pulseaudio wlan eth battery powermenu
+wm-restack = bspwm
+override-redirect = false
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+; Under-/overline pixel size and argb color
+; Individual values can be defined using:
+overline-size = 6
+underline-size = 6
+
+underline-color = ${colors.background}
+overline-color = ${colors.background}
+
+[bar/side]
+monitor = eDP1
+width = 98%
+height = 36
+radius = 5
+offset-x = 1%
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 2
+border-size = 0
+border-top-size = 2
+border-color = #00000000
+padding-left = 1
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 1
+font-0 = Hack:pixelsize=12;1
+font-1 = Hack:pixelsize=12;1
+font-2 = Hack:pixelsize=12;1
+font-3 = Hurmit Nerd Font Mono:pixelsize=24;1
+modules-left = bspwm
+modules-center = spotify
+modules-right = filesystem 
+wm-restack = bspwm
+override-redirect = false
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+; Under-/overline pixel size and argb color
+; Individual values can be defined using:
+overline-size = 6
+underline-size = 6
+underline-color = ${colors.background}
+overline-color = ${colors.background}
+
+[settings]
+screenchange-reload = true
+
