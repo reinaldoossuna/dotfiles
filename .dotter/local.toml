@@ -1,0 +1,12 @@
+includes = []
+packages = [
+"bspwm",
+"polybar-slim",
+"vim",
+"topgrade",
+"zsh",
+"emacs"]
+
+[files]
+
+[variables]
