@@ -1,0 +1,103 @@
+source ~/.zplug/init.zsh
+
+source ~/.zsh_profile
+source ~/.zsh_plugins
+source ~/.zsh_aliases
+
+#source /usr/share/nvm/init-nvm.sh
+
+take() {
+  if [[ ! -d "$@" ]]
+  then
+    mkdir "$@"
+  fi
+
+  cd "$@"
+}
+
+tre() {
+  command tre "$@" -s -e && source "/tmp/tre_aliases_$USER" 2>/dev/null;
+}
+
+# fh - repeat history
+fh() {
+  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g' | fzf +s --tac  )
+}
+ffc() {
+  print -z " fc -e=vim $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | awk '{print $1}')"
+}
+
+tldr() {
+  if [ $@ ]; then
+    $(which -p tldr) $@
+  else
+    $(which -p tldr) --list | fzf --height=100 --preview "$(which -p tldr) {} --color always" | xargs -r tldr
+  fi
+}
+
+
+fif() {
+  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+  rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+}
+
+prfd () {
+        paru -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf --height=60 --multi --preview ' paru -Si {1}' --reverse | xargs -ro paru -S
+}
+
+cinit () {
+  if (( $# == 0 )); then
+    echo "usage: cinit [lib] NAME"; return 1;
+  fi
+
+  if [ "$1" = "lib" ]; then
+    cargo new --lib "$2" && cd "$2" && e src/lib.rs
+  else
+    cargo new "$@" && cd "$@" && e src/main.rs
+  fi
+}
+
+
+function pfetchtimer() {
+  file="/tmp/last_pf"
+  now=$(date +%s)
+  e=600
+
+  {
+    read last <<< $(cat $file 2> /dev/null)
+    d=$(( now - last ))
+  } || { #if file dont exist
+    d=$(( e + 1 ))
+  }
+
+  if [[  $d -ge $e ]]; then
+    fastfetch
+    echo $now > $file
+  fi
+}
+pfetchtimer
+
+ssh-xterm() {
+  TERM=xterm-256color ssh $@
+}
+
+foreground-vi() {
+  fg %vim
+}
+zle -N foreground-vi
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load
+source ~/.zsh_bindkey
+
+#autoload bashcompinit
+#bashcompinit
+#source /opt/vcpkg/scripts/vcpkg_completion.zsh

@@ -1,0 +1,63 @@
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$HOME/.cargo/bin:$PATH"
+export EDITOR="/bin/emacs-nw-q.sh"
+export SYSTEMD_EDITOR="vim"
+export CHROOT=$HOME/chroot
+export CPM_SOURCE_CACHE=$HOME/.cache/CPM
+export LAMBDA_MOD_N_DIR_LEVELS=1
+export NINJAFLAGS="-j10"
+export LASTUPGRADEDATE=~/.last_upgrade_date
+export ZSH_FZF_HISTORY_SEARCH_EVENT_NUMBERS=0
+export ZSH_FZF_HISTORY_SEARCH_DATES_IN_SEARCH=0
+export ZSH_FZF_HISTORY_SEARCH_REMOVE_DUPLICATES=1
+export LD_LIBRARY_PATH=/usr/lib
+
+export BB_ENV_PASSTHROUGH_ADDITIONS="DL_DIR SSTATE_DIR"
+export DL_DIR="${HOME}/data/bitbake.downloads"
+export SSTATE_DIR="${HOME}/data/bitbake.sstate"
+
+# vcpkg
+export VCPKG_ROOT=/opt/vcpkg
+export VCPKG_DOWNLOADS=/var/cache/vcpkg
+# fzf config
+export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border --preview-window=hidden --bind ctrl-h:toggle-preview'
+
+export TERMINAL=alacritty
+
+# use gpg-agent
+unset SSH_AGENT_PID
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
+
+# eval "$(zoxide init zsh)"
+
+export AUTO_NOTIFY_THRESHOLD=20
+export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_code"
+AUTO_NOTIFY_IGNORE+=("docker" "bluetoothctl")
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+MODE_CURSOR_VIINS=" blinking bar"
+MODE_CURSOR_REPLACE="$MODE_CURSOR_VIINS #ff0000"
+MODE_CURSOR_VICMD="green block"
+MODE_CURSOR_SEARCH=" steady underline"
+MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD steady bar"
+MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
+
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':autocomplete:*' insert-unambiguous yes
+zstyle ':autocomplete:*' widget-style menu-select
+
+setopt automenu
+setopt appendhistory
+setopt sharehistory
+setopt autocd
+setopt vi
+setopt histignorealldups
+setopt histsavenodups
+setopt histreduceblanks
+setopt incappendhistory
+setopt extendedhistory
+setopt nomenucomplete
+setopt no_list_ambiguous
+setopt interactivecomments

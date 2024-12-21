@@ -1,0 +1,27 @@
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug "zsh-users/zsh-history-substring-search"
+#zplug 'halfo/lambda-mod-zsh-theme', as:theme
+zplug mafredri/zsh-async, from:github
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+#zplug "b4b4r07/enhancd"
+zplug 'hcgraf/zsh-sudo'
+zplug 'thetic/extract'
+#zplug 'randomphrase/vterm-zsh-plugin'
+zplug 'chrissicool/zsh-256color'
+zplug 'zpm-zsh/ls'
+zplug 'zsh-users/zsh-autosuggestions'
+#zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zdharma-continuum/fast-syntax-highlighting", defer:2
+#zplug "SukkaW/zsh-gitcd"
+#zplug "softmoth/zsh-vim-mode"
+#zplug "mdumitru/git-aliases"
+bindkey -e
+zplug 'joshskidmore/zsh-fzf-history-search', defer:2
+#zplug "MichaelAquilina/zsh-auto-notify"
+#zplug "rapgenic/zsh-git-complete-urls"
+#zplug "iboyperson/pipenv-zsh"
+zplug "zsh-users/zsh-completions"
+#zplug 'jeffreytse/zsh-vi-mode'
+#zplug "redxtech/zsh-tre"
+#zplug 'linnnus/autovenv'
+#zplug 'bobsoppe/zsh-ssh-agent'

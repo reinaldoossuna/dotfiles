@@ -1,0 +1,8 @@
+bindkey '^Z' foreground-vi
+#bindkey -s '^u' ' ls -lAGh1vX --format=horizontal --group-directories-first --color=auto\n'                # [Ctrl-u] - run command: ls
+#bindkey -s '^y' ' ls -lAGhvX --color=auto\n'                # [Ctrl-u] - run command: ls
+bindkey -s '^o' 'exa --icons -F\n'                # [Ctrl-u] - run command: ls
+bindkey -s '^u' 'exa --icons -F --long --all\n'                # [Ctrl-u] - run command: ls
+bindkey -s '^y' 'exa --icons -F --tree --level=2\n'                # [Ctrl-u] - run command: ls
+#bindkey -s '^f' '\nclear && pfetch\n'                # [Ctrl-f] - pfetch
+#

@@ -1,0 +1,11 @@
+alias e='${EDITOR}'
+alias pr=' paru'
+alias ccm='sudo ccm'
+alias zshconfig="vim ~/.zshrc"
+alias bspconfig="vim ~/.config/bspwm/bspwmrc"
+alias sxhconfig="vim ~/.config/sxhkd/sxhkdrc"
+alias -g rp='| rg -v rg | rg -i'
+alias doom='~/.config/emacs/bin/doom'
+alias clock='tty-clock -C 4 -c && clear'
+alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+alias source_esp='source /opt/esp-idf/export.sh'
