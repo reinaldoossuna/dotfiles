@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: operator()
+# key: ()
+# uuid: ()
+# group: operator overloading
+# --
+${1:void} operator()(${2:int i}){
+  $0
+}

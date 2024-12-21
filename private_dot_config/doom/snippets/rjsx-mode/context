@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: context
+# key: context
+# --
+import { createContext, useContext } from "react";
+
+const ${1:`f-base buffer-file-name`}Context = createContext();
+
+const $1Provider = ({ children }) => {
+  return <$1Context.Provider>
+    {children}
+  </$1Context.Provider>
+}
+
+const use$1 = () => {
+  const context = useContext($1Context);
+  if (context === undefined) throw new Error("$1Context was used outside $1Provider")
+  return context
+}
+
+export {$1Provider, use$1}

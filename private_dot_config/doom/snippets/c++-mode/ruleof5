@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: rule of 5
+# uuid: ro5
+# key: ro5
+# --
+
+${1:Name}() = default;
+~${1:$(yas/substr yas-text "[^: ]*")}() = default;
+${1:$(yas/substr yas-text "[^: ]*")}(${1:$(yas/substr yas-text "[^: ]*")} const& other) = default;
+${1:$(yas/substr yas-text "[^: ]*")}(${1:$(yas/substr yas-text "[^: ]*")} && other) = default;
+auto operator=(${1:$(yas/substr yas-text "[^: ]*")} const& other) -> ${1:$(yas/substr yas-text "[^: ]*")}& = default;
+auto operator=(${1:$(yas/substr yas-text "[^: ]*")} && other) -> ${1:$(yas/substr yas-text "[^: ]*")}& = default;

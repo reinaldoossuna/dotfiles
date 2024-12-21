@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: usestate
+# key: usestate
+# condition: t
+# type: command
+# --
+(doom-snippets-expand :uuid "useState")

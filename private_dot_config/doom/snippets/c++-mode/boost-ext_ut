@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: boost-ext ut
+# uuid: utest
+# key: utest
+# --
+
+"$1"_test = [] {
+  $0
+  expect($2);
+};

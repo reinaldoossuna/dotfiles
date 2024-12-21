@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: mmain
+# key: mmain
+# type: command
+# --
+(doom-snippets-expand :name "main_my")

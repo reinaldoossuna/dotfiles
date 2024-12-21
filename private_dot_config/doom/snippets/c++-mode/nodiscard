@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: nodiscard
+# uuid: nd
+# key: nd
+# --
+[[nodiscard]]

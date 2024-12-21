@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: React functional Component
+# key: rfc
+# --
+const ${1:`(file-name-base buffer-file-name)`} = (${2:\{$3\}}) => (
+  ${4:<div>${0:$1}</div>}
+);
+
+export default $1;

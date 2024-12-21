@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: tailwind imports
+# key: tailwind
+# --
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;

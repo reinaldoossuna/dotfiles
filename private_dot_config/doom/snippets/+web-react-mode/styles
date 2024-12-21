@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: styles css
+# uuid:
+# key: styles
+# condition: t
+# --
+import styles from './${1:`(file-name-base buffer-file-name)`}.module.css'

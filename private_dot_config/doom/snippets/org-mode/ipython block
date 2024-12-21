@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ipython block
+# key: py
+# --
+#+BEGIN_SRC ipython :session ${1::kernel ${2}} :exports both :results raw drawer
+  $0
+#+END_SRC
