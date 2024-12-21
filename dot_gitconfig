@@ -1,0 +1,6 @@
+[user]
+	email = Reinaldo Ossuna
+	name = reinaldo.ossuna@gmail.com
+[core]
+	editor = vim
+	excludesfile = /home/nardo/.gitignore
