@@ -1,0 +1,31 @@
+Config { overrideRedirect = False
+       , font     = "Iosevka SS05 extrabold"
+       , bgColor  = "#1a1b26"
+       , fgColor  = "#bdc7f0"
+       , position = TopH 25 L
+       , commands = [ Run MultiCpu
+                        [ "-L", "3"
+                        , "-H", "50"
+                        , "--high"  , "red"
+                        , "--normal", "green"
+                        ] 10
+                    , Run Volume "default" "Master" [
+                    "--template", "<action=`pulsemixer --change-volume +5` button=1><action=`pulsemixer --change-volume -5` button=3>Vol: <volume>%</action></action>"
+                    ] 10
+                    , Run Memory ["--template", "Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Date "<action=`xdotool key ctrl+shift+o c` button=1>%a %Y-%m-%d <fc=#73daca>%H:%M</fc></action>" "date" 10
+                    , Run UnsafeXMonadLog
+                    , Run MultiCoreTemp
+                        [ "-t", "Temp: <avg>°C"
+                          ,"-L", "40"
+                          ,"-H", "60"
+                          ,"-l", "#b4f9f8"
+                          ,"-n", "#8189af"
+                          ,"-h", "#f7768e"
+                        ] 50
+                    ]
+       , sepChar  = "%"
+       , alignSep = "}{"
+       , template = "%UnsafeXMonadLog% }{ %default:Master% | %multicpu% %multicoretemp% |  %date% "
+       }
