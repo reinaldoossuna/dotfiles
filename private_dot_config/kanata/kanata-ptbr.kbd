@@ -1,0 +1,29 @@
+(deflocalkeys-linux
+  ´ 26
+  [ 27
+  ç 39
+  ~ 40
+  ' 41
+  ] 43
+  ; 53
+  \ 86
+  / 89
+)
+
+(defsrc ;; brazillian-abnt2
+  ;; esc  f1    f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  '    1     2    3    4    5    6    7    8    9    0    -    =   bspc
+  tab  q     w    e    r    t    y    u    i    o    p    ´    [   ret
+  caps a     s    d    f    g    h    j    k    l    ç    ~    ]
+  lsft \     z    x    c    v    b    n    m    ,    .    ;    rsft
+  lctl lmet  lalt           spc            ralt      rctl
+)
+
+
+(deflayer colemak-dh
+          @td_grv      @td_1      @td_2      @td_3      @td_4      @td_5      @td_=      @td_6      @td_7      @td_8      @td_9      @td_0      @tde_min      bspc
+          tab      q      w      f       p      b      [      j      l      u      y      ;      '  @retctl
+          @cap      @a     @r     @s      @t     g      ]      k     @n     @e      @i      @o
+          @sft   \     x     c      @d      v      z      /      m      @h      ,      .             @bcw
+          lmet     lalt      @arrow_t                  @spc                           @switcher      ralt
+          )

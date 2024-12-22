@@ -1,0 +1,64 @@
+;; Swap numbers and their symbols with respect to shift
+;; Define alias for the numbers
+(defvar
+  tap-time-numbers-swap 300
+  tap-time-eager-numbers-swap 500
+  )
+
+(defalias
+  0 S-0
+  1 S-1
+  2 S-2
+  3 S-3
+  4 S-4
+  5 S-5
+  6 S-6
+  7 S-7
+  8 S-8
+  9 S-9
+
+  td_0 (tap-dance $tap-time-numbers-swap (0 S-0))
+  td_1 (tap-dance $tap-time-numbers-swap (1 S-1))
+  td_2 (tap-dance $tap-time-numbers-swap (2 S-2))
+  td_3 (tap-dance $tap-time-numbers-swap (3 S-3))
+  td_4 (tap-dance $tap-time-numbers-swap (4 S-4))
+  td_5 (tap-dance $tap-time-numbers-swap (5 S-5))
+  td_6 (tap-dance $tap-time-numbers-swap (6 S-6))
+  td_7 (tap-dance $tap-time-numbers-swap (7 S-7))
+  td_8 (tap-dance $tap-time-numbers-swap (8 S-8))
+  td_9 (tap-dance $tap-time-numbers-swap (9 S-9))
+  td_= (tap-dance $tap-time-numbers-swap (= S-=))
+  td_grv (tap-dance $tap-time-numbers-swap (grv S-grv))
+
+  tde_= (tap-dance-eager $tap-time-eager-numbers-swap ((macro =) (macro bspc S-=) (macro bspc = =) (macro bspc bspc S-= S-=)))
+  tde_grv (tap-dance-eager $tap-time-eager-numbers-swap ((macro grv) (macro bspc S-grv)))
+  tde_min (tap-dance-eager $tap-time-eager-numbers-swap ((macro min) (macro bspc S-min) (macro bspc min min) (macro bspc bspc S-min S-min)))
+  )
+
+(defoverrides
+ (0) (lsft 0)
+ (1) (lsft 1)
+ (2) (lsft 2)
+ (3) (lsft 3)
+ (4) (lsft 4)
+ (5) (lsft 5)
+ (6) (lsft 6)
+ (7) (lsft 7)
+ (8) (lsft 8)
+ (9) (lsft 9)
+ (=) (lsft =)
+ (grv) (lsft grv)
+
+ (lsft 0) (0)
+ (lsft 1) (1)
+ (lsft 2) (2)
+ (lsft 3) (3)
+ (lsft 4) (4)
+ (lsft 5) (5)
+ (lsft 6) (6)
+ (lsft 7) (7)
+ (lsft 8) (8)
+ (lsft 9) (9)
+ (lsft =) (=)
+ (lsft grv) (grv)
+ )
