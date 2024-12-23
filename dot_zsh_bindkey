@@ -5,4 +5,5 @@ bindkey -s '^o' 'exa --icons -F\n'                # [Ctrl-u] - run command: ls
 bindkey -s '^u' 'exa --icons -F --long --all\n'                # [Ctrl-u] - run command: ls
 bindkey -s '^y' 'exa --icons -F --tree --level=2\n'                # [Ctrl-u] - run command: ls
 #bindkey -s '^f' '\nclear && pfetch\n'                # [Ctrl-f] - pfetch
-#
+
+bindkey -e
