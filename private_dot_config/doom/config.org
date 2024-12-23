@@ -72,8 +72,8 @@ Some functionality uses this to identify you, e.g. GPG configuration, email clie
 * UI
 ** Font
 #+begin_src emacs-lisp :tangle yes
-(setq doom-font (font-spec :family "Iosevka Term Curly" :size 18  :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "DejaVu Sans" :size 13)
+(setq doom-font (font-spec :family "IosevkaTerm NF" :size 18  :weight 'regular)
+      doom-variable-pitch-font (font-spec :family "DejaVu SansM Nerd Font" :size 13)
       doom-symbol-font (font-spec :family "JuliaMono")
       doom-big-font (font-spec :family "JetBrainsMono" :size 24))
 #+end_src
