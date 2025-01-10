@@ -13,6 +13,7 @@
   - [[#display-line][Display line]]
   - [[#dashboard][Dashboard]]
 - [[#coding][Coding]]
+- [[#chezmoi][Chezmoi]]
 - [[#modes][Modes]]
   - [[#org][ORG]]
   - [[#latex][Latex]]
@@ -137,6 +138,23 @@ This determines the style of line numbers in effect. If set to "nil", line numbe
         )
        )
  )
+#+end_src
+
+* Chezmoi
+#+begin_src emacs-lisp :tangle yes
+(use-package! chezmoi)
+(map!
+ (:map doom-leader-file-map
+       (:prefix "."
+                "w" #'chezmoi-write
+                "s" #'chezmoi-sync-files
+                "d" #'chezmoi-diff
+                "e" #'chezmoi-ediff
+                "f" #'chezmoi-find
+                "t" #'chezmoi-template-buffer-display
+                "o" #'chezmoi-open-other
+                "W" #'chezmoi-write-files
+)))
 #+end_src
 
 

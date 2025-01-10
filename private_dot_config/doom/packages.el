@@ -25,3 +25,5 @@
 ;; python dev modules
 (package! numpydoc)
 (package! lsp-pyright)
+
+(package! chezmoi)
