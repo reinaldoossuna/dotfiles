@@ -528,6 +528,34 @@ Make "_" part of a "word"
  projectile-enable-cmake-presets t)
 #+end_src
 
+#+begin_src emacs-lisp :tangle yes
+(after! projectile
+
+  (projectile-register-project-type 'uv '(".venv" "pyproject.toml")
+                                    :project-file "pyproject.toml"
+                                    :run "uv run"
+                                    :configure "uv sync"
+                                    :test "uv run pytest test"
+                                    :test-dir "test"
+                                    )
+
+  (projectile-register-project-type 'vite '("vite.config.ts" "vite.config.js")
+                                  :project-file "vite.config.ts"
+                                  :compile "tsc -b && vite build"
+                                  :run "vite"
+                                  )
+
+  (projectile-register-project-type 'justfile '("justfile")
+                                  :project-file "justfile"
+                                  :compile "just build"
+                                  :test "just test"
+                                  :install "just install"
+                                  :run "just run"
+                                  )
+  )
+#+end_src
+
+
 ** Openwith
 
 #+begin_src emacs-lisp :tangle yes
@@ -598,14 +626,6 @@ Make "_" part of a "word"
 ** Just
 
 #+begin_src emacs-lisp :tangle yes
-
-(after! projectile
-  (add-to-list 'projectile-project-root-files "justfile")
-  (add-to-list 'projectile-project-types '(just marker-files ("justfile") project-file "justfile" compilation-dir nil
-                                           configure-command "just config" compile-command "just build" test-command
-                                           "just test" install-command "just install" package-command nil
-                                           run-command "just run"))
-  )
 
 (use-package! justl
   :config
