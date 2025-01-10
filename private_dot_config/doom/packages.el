@@ -21,3 +21,7 @@
 ;; (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss"))
 (package! justl :recipe (:host github :repo "psibi/justl.el"))
 (package! just-mode :recipe (:host github :repo "leon-barrett/just-mode.el"))
+
+;; python dev modules
+(package! numpydoc)
+(package! lsp-pyright)

@@ -660,6 +660,42 @@ ipython command need to be absolute
   )
 #+end_src
 
+**** UV
+#+begin_src emacs-lisp :tangle yes
+(defun venv-path ()
+  (expand-file-name ".venv"  (projectile-project-root))
+  )
+
+(defun auto-activate-env-hook ()
+  (when (eq (projectile-project-type) 'uv)
+    (pyvenv-activate (venv-path))
+    (message "Current VENV: %s" pyvenv-virtual-env)
+    )
+  )
+(add-hook 'projectile-after-switch-project-hook #'auto-activate-env-hook)
+#+end_src
+**** Numpydoc
+
+#+begin_src emacs-lisp :tangle yes
+
+;; conflict with tree-sitter
+;; (use-package! numpydoc
+;;   :custom
+;;   (numpydoc-insertion-style 'yas))
+
+(map! :map python-mode-map
+      :localleader
+      :desc "Numpydoc Gen" :nv "d" #'numpydoc-generate)
+#+end_src
+
+**** lsp-pyright
+
+#+begin_src emacs-lisp :tangle yes
+(use-package! lsp-pyright
+  :custom (lsp-pyright-langserver-command "pyright") ;; or basedpyright
+)
+#+end_src
+
 ** Rust
 
 Remap of some commands, [[file:/hdd/home/nardo/.config/emacs/modules/lang/rust/config.el::(map! :map rustic-mode-map][more commands]].
