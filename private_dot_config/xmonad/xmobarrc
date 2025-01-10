@@ -10,7 +10,7 @@ Config { overrideRedirect = False
                         , "--normal", "green"
                         ] 10
                     , Run Volume "default" "Master" [
-                    "--template", "<action=`pulsemixer --change-volume +5` button=1><action=`pulsemixer --change-volume -5` button=3>Vol: <volume>%</action></action>"
+                    "--template", "<action=`wpctl set-volume @DEFAULT_SINK@ .05+` button=1><action=`wpctl set-volume @DEFAULT_SINK@ .05-` button=3>Vol: <volume>%</action></action>"
                     ] 10
                     , Run Memory ["--template", "Mem: <usedratio>%"] 10
                     , Run Swap [] 10

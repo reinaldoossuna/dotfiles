@@ -84,7 +84,7 @@ main =
 myConfig =
   def
     { modMask = mod4Mask, -- Use Super instead of Alt
-      terminal = "alacritty",
+      terminal = "kitty",
       layoutHook = myLayout,
       startupHook = myStartupHook,
       normalBorderColor = "#bdc7f0",
@@ -104,9 +104,6 @@ myConfig =
     `additionalKeysP` [ ("C-S-o f", spawn "firefox -P"),
                         ("C-S-o e", spawn "emacsclient -c"),
                         ("C-S-o p", spawn "printscreen"),
-                        ("C-S-o w", namedScratchpadAction scratchpads "whats"),
-                        ("C-S-o c", namedScratchpadAction scratchpads "calendar"),
-                        ("C-S-o s", namedScratchpadAction scratchpads "spotify"),
                         ("M-w", spawn "firefox"),
                         ("C-q", kill),
                         ("M-<Tab>", nextScreen),
@@ -117,6 +114,7 @@ myConfig =
                         ("M-S-,", prevWSempty),
                         ("M-S-<Space>", namedScratchpadAction scratchpads "dropdown"),
                         ("M-M1-<Space>", spawn "rofi -show combi"),
+                        ("M-p", spawn "rofi -show drun -config /home/nardo/.config/rofi/dmenu.rasi"),
                         ("M-<Up>", windows W.focusUp),
                         ("M-<Down>", windows W.focusDown),
                         ("M-u", windows W.focusUp),
@@ -155,16 +153,13 @@ myStartupHook = do
   spawnOnce "xsetroot -cursor_name left_ptr"
   spawnOnce "setxkbmap -option compose:ralt"
   spawnOnce ". /hdd/home/nardo/.screenlayout/monitorV.sh"
-  spawnOnce "systemctl restart --user emacs.service"
-  spawn "xcompmgr"
-  spawnAllScratchpads
   setWMName "LG3D"
   where
     spawnAllScratchpads = mapM_ (namedScratchpadAction scratchpads) ["dropwdown", "spotify", "whats", "calendar"]
 
 scratchpads :: [NamedScratchpad]
 scratchpads =
-  [ NS "dropdown" "alacritty --class dropdown" (className =? "dropdown") wideRect,
+  [ NS "dropdown" "kitty --class dropdown" (className =? "dropdown") wideRect,
     NS "spotify" "spotify" (className =? "Spotify") floatRect,
     NS "whats" "whatsapp" (className =? "FFPWA-01J94H8C566XT94XFNY2BA3BHR") floatRect,
     NS "calendar" "calendar" (className =? "FFPWA-01J94JMGJSGCKP105KWM7N5BF0") floatRect
