@@ -11,7 +11,7 @@
 (package! bitbake)
 
 (package! kbd-mode
-  :recipe (:host 'local-repo :local-repo "~/Projects/kbd-mode" ))
+  :recipe (:host github :repo "reinaldoossuna/kbd-mode" ))
 
 (package! systemd-mode)
 
