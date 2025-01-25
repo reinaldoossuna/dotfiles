@@ -80,9 +80,9 @@
        :checkers
        (syntax             ; tasing you for every semicolon you forget
         +childframe)
-       (spell                           ; tasing you for misspelling mispelling
-        +flyspell
-        +hunspell)
+       ;; (spell           ; tasing you for misspelling mispelling
+       ;;  +flyspell
+       ;;  +hunspell)
        ;;grammar           ; tasing grammar mistake every you make
 
        :tools
@@ -157,6 +157,7 @@
        ;;kotlin            ; a better, slicker Java(Script)
        ;;latex
        (latex              ; writing papers in Emacs has never been so fun
+        +fold
         +lsp)
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be

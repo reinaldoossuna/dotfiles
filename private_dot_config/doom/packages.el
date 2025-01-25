@@ -1,6 +1,5 @@
 (package! org-super-agenda)
 (package! org-modern)
-(package! org-gcal)
 
 (package! calibredb)
 
