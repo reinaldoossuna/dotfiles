@@ -69,7 +69,7 @@ cleanup = true
 
 # Custom commands
 [commands]
-"Need Restarts?" = "/usr/bin/sudo /usr/bin/needrestart -m a -r l -b"
+#"Need Restarts?" = "/usr/bin/sudo /usr/bin/needrestart -m a -r l -b"
 "Save date" = "date +%s > /home/nardo/.last_upgrade_date"
 #"Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
 
