@@ -16,6 +16,7 @@ import XMonad.Actions.FlexibleResize qualified as Flex
 import XMonad.Actions.FloatSnap (snapMagicMove, snapMagicResize)
 import XMonad.Actions.Launcher (LauncherConfig (LauncherConfig), defaultLauncherModes, launcherPrompt)
 import XMonad.Actions.UpdatePointer (updatePointer)
+import XMonad.Actions.Warp (Corner (UpperLeft), banish)
 import XMonad.Hooks.DynamicLog
   ( PP
       ( ppCurrent,
@@ -48,7 +49,6 @@ import XMonad.Layout.BinarySpacePartition
     Direction2D (D, L, R, U),
     emptyBSP,
   )
-import XMonad.Layout.Magnifier (magnifier', magnifiercz')
 import XMonad.Layout.PerScreen (ifWider)
 import XMonad.Layout.ThreeColumns (ThreeCol (ThreeColMid))
 import XMonad.Prompt.ConfirmPrompt (confirmPrompt)
@@ -91,7 +91,7 @@ myConfig =
       focusedBorderColor = "#3d59a1",
       manageHook = manageHook def <> namedScratchpadManageHook scratchpads <> myManageHook,
       workspaces = myWorkspaces,
-      logHook = updatePointer (1 % 2, 1 % 10) (0, 0) <> refocusLastLogHook >> nsHideOnFocusLoss scratchpads <> logHook def
+      logHook = refocusLastLogHook >> nsHideOnFocusLoss scratchpads <> logHook def
     }
     `removeKeys` [ (mod4Mask .|. mod, n)
                    | n <- [xK_1 .. xK_9],
@@ -105,9 +105,10 @@ myConfig =
                         ("C-S-o e", spawn "emacsclient -c"),
                         ("C-S-o p", spawn "printscreen"),
                         ("M-w", spawn "firefox"),
+                        ("M-f", spawn "pcmanfm-qt"),
                         ("C-q", kill),
-                        ("M-<Tab>", nextScreen),
-                        ("M-S-<Tab>", swapNextScreen >> nextScreen),
+                        ("M-<Tab>", nextScreen >> banish UpperLeft),
+                        ("M-S-<Tab>", swapNextScreen >> nextScreen >> banish UpperLeft),
                         ("M-.", nextWSused),
                         ("M-S-.", nextWSempty),
                         ("M-,", prevWSused),
@@ -142,8 +143,8 @@ myConfig =
 
 myLayout = ifWider 1000 (threeCol ||| Full) vTiled
   where
-    threeCol = magnifiercz' 1.6 $ ThreeColMid 1 (3 / 100) (9 / 16)
-    vTiled = Mirror $ Tall 1 (3 / 100) (1 / 2)
+    threeCol = ThreeColMid 1 (3 / 100) (9 / 16)
+    vTiled = Mirror threeCol
 
 myWorkspaces = ["ᚪA", "ᚱR", "ᛊS", "ᛏT", "ᚵG", "ᚴK", "ᚿN", "ᛂE", "ᛁI", "ᚮO", "NSP"]
 
