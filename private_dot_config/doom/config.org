@@ -32,6 +32,7 @@
   - [[#just][Just]]
   - [[#python][Python]]
   - [[#rust][Rust]]
+  - [[#docker][Docker]]
 
 * Variables
 
@@ -615,7 +616,7 @@ Make "_" part of a "word"
 
 ** Web development
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp :tangle yes
 (use-package! lsp-tailwindcss
   :init
   (setq lsp-tailwindcss-add-on-mode t))
@@ -727,4 +728,13 @@ Remap of some commands, [[file:/hdd/home/nardo/.config/emacs/modules/lang/rust/c
    :desc "cargo add missing"    "A" #'rustic-cargo-add-missing-dependencies
    :desc "visic Cargo.toml"     "t" #'lsp-rust-analyzer-open-cargo-toml
 ))
+#+end_src
+
+** Docker
+
+#+begin_src emacs-lisp :tangle yes
+(after! docker
+        (setq docker-command "podman")
+        (setq docker-command "podman")
+        (setq docker-compose-command "podman compose"))
 #+end_src

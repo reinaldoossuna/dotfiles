@@ -91,7 +91,8 @@
        ;;collab            ; buffers with friends
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
-       docker
+       (docker
+        +lsp)
        ;;editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
@@ -148,10 +149,10 @@
        ;; (java +lsp
        ;;       +tree-sitter
        ;;       )       ; the poster child for carpal tunnel syndrome
-       ;; (javascript        ; all(hope(abandon(ye(who(enter(here))))))
-       ;;  +lsp
-       ;;  +tree-sitter
-       ;;  )
+       (javascript        ; all(hope(abandon(ye(who(enter(here))))))
+        +lsp
+        +tree-sitter
+        )
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        ;;latex
@@ -195,10 +196,12 @@
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       ;; (web               ; the tubes
-       ;;  +lsp
-       ;;  +tree-sitter)
-       ;;yaml              ; JSON, but readable
+       (web               ; the tubes
+        +lsp
+        +tree-sitter)
+       (yaml              ; JSON, but readable
+        +lsp
+        +tree-sitter)
        ;;zig               ; C, but simpler
 
        :email
