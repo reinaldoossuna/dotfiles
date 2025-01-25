@@ -15,10 +15,6 @@ take() {
   cd "$@"
 }
 
-tre() {
-  command tre "$@" -s -e && source "/tmp/tre_aliases_$USER" 2>/dev/null;
-}
-
 # fh - repeat history
 fh() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g' | fzf +s --tac  )
@@ -45,18 +41,10 @@ prfd () {
         paru -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf --height=60 --multi --preview ' paru -Si {1}' --reverse | xargs -ro paru -S
 }
 
-cinit () {
-  if (( $# == 0 )); then
-    echo "usage: cinit [lib] NAME"; return 1;
-  fi
-
-  if [ "$1" = "lib" ]; then
-    cargo new --lib "$2" && cd "$2" && e src/lib.rs
-  else
-    cargo new "$@" && cd "$@" && e src/main.rs
-  fi
+tree() {
+  LEVEL=${1:-1}
+  eza --icons -F --tree --level=$LEVEL
 }
-
 
 function pfetchtimer() {
   file="/tmp/last_pf"

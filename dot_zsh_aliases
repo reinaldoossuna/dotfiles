@@ -9,3 +9,9 @@ alias doom='~/.config/emacs/bin/doom'
 alias clock='tty-clock -C 4 -c && clear'
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 alias source_esp='source /opt/esp-idf/export.sh'
+
+eza_params=('--git' '--icons' '--classify' '--group-directories-first' '--time-style=long-iso' '--group' '--color-scale')
+alias ll='eza ${eza_params}'
+alias la='eza --long --all --header ${eza_params}'
+alias lm='eza --long --all --header --sort=modified ${eza_params}'
+alias lt='tree'
