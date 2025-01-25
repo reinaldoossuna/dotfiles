@@ -144,14 +144,26 @@ This determines the style of line numbers in effect. If set to "nil", line numbe
 * Chezmoi
 #+begin_src emacs-lisp :tangle yes
 (use-package! chezmoi)
+(require 'chezmoi-age)
+(require 'chezmoi-magit)
+(require 'chezmoi-dired)
+(require 'age)
+(require 'chezmoi-ediff)
+(require 'chezmoi-company)
+(add-hook! 'chezmoi-mode-hook #'(lambda () (if chezmoi-mode
+                                               (add-to-list 'company-backends 'chezmoi-company-backend)
+                                             (delete 'chezmoi-company-backend 'company-backends))))
+
 (map!
  (:map doom-leader-file-map
        (:prefix "."
+                "a" #'chezmoi-dired-add-marked-files
                 "w" #'chezmoi-write
                 "s" #'chezmoi-sync-files
                 "d" #'chezmoi-diff
                 "e" #'chezmoi-ediff
                 "f" #'chezmoi-find
+                "g" #'chezmoi-magit-status
                 "t" #'chezmoi-template-buffer-display
                 "o" #'chezmoi-open-other
                 "W" #'chezmoi-write-files
@@ -349,16 +361,42 @@ If you use "org" and don't want your org files in the default location below, ch
     (advice-add 'jupyter-handle-execute-reply :filter-args #'my/jupyter-remove-empty-async-results)))
 #+end_src
 ** Latex
+:LOGBOOK:
+CLOCK: [2025-01-24 Fri 09:29]--[2025-01-24 Fri 09:35] =>  0:06
+:END:
 
 #+begin_src emacs-lisp :tangle yes
-(add-hook! 'LaTeX-mode-hook
-           (TeX-engine-set 'luatex)
-           (TeX-fold-mode t)
-  )
+(setq TeX-engine-alist '((default
+                          "Tectonic"
+                          "tectonic -X compile -f plain %T"
+                          "tectonic -X watch"
+                          nil)))
+
+(setq LaTeX-command-style '(("" "%(latex)")))
+
 (setq-hook! 'LaTeX-mode-hook
   TeX-PDF-mode t
   TeX-command-extra-options "-synctex=1"
   TeX-source-correlate-mode t
+  TeX-process-asynchronous t
+  TeX-check-TeX nil
+  TeX-engine 'default
+  )
+
+(add-hook 'after-change-major-mode-hook
+          (lambda ()
+            (when-let ((project (project-current))
+                       (proot (project-root project)))
+              (when (file-exists-p (expand-file-name "Tectonic.toml" proot))
+                (setq-local TeX-output-dir (expand-file-name "build/default" proot))))))
+
+(use-package! lsp-ltex-plus
+  :ensure t
+  :hook (text-mode . (lambda ()
+                       (require 'lsp-ltex-plus)
+                       (lsp)))
+  :init
+  (setq lsp-ltex-plus-version "18.2.0")
   )
 
 #+end_src
@@ -370,7 +408,7 @@ If you use "org" and don't want your org files in the default location below, ch
   :defer t
   :config
   (setq! calibredb-program "/usr/bin/calibredb"
-         calibredb-root-dir "~/Documents/Books/"
+         calibredb-root-dir "/hdd/books/"
          calibredb-format-all-the-icons t
          calibredb-format-character-icons t
          calibredb-db-dir (expand-file-name "metadata.db" calibredb-root-dir)
@@ -403,19 +441,19 @@ If you use "org" and don't want your org files in the default location below, ch
 ** LSP
 
 #+begin_src emacs-lisp :tangle yes
-(after! lsp-mode
-  (setq! lsp-rust-server 'rust-analyzer
-         lsp-ui-sideline-actions-icon nil
-         lsp-ui-sideline-show-diagnostics t
-         lsp-rust-analyzer-server-display-inlay-hints t
-         lsp-headerline-breadcrumb-enable t
-         lsp-ui-doc-show-with-cursor nil
-         lsp-ui-sideline-show-hover nil
-         lsp-signature-auto-activate nil
-         lsp-signature-render-documentation t
-         lsp-rust-clippy-preference "on"
-         lsp-rust-analyzer-cargo-watch-command "clippy"
-         lsp-diagnostics-provider :flycheck))
+;; (after! lsp-mode
+;;   (setq! lsp-rust-server 'rust-analyzer
+;;          lsp-ui-sideline-actions-icon nil
+;;          lsp-ui-sideline-show-diagnostics t
+;;          lsp-rust-analyzer-server-display-inlay-hints t
+;;          lsp-headerline-breadcrumb-enable t
+;;          lsp-ui-doc-show-with-cursor nil
+;;          lsp-ui-sideline-show-hover nil
+;;          lsp-signature-auto-activate nil
+;;          lsp-signature-render-documentation t
+;;          lsp-rust-clippy-preference "on"
+;;          lsp-rust-analyzer-cargo-watch-command "clippy"
+;;          lsp-diagnostics-provider :flycheck))
 #+end_src
 
 #+begin_src emacs-lisp :tangle yes
@@ -574,7 +612,6 @@ Make "_" part of a "word"
   )
 #+end_src
 
-
 ** Openwith
 
 #+begin_src emacs-lisp :tangle yes
@@ -719,7 +756,7 @@ ipython command need to be absolute
 
 Remap of some commands, [[file:/hdd/home/nardo/.config/emacs/modules/lang/rust/config.el::(map! :map rustic-mode-map][more commands]].
 #+begin_src emacs-lisp :tangle yes
-(after! rustic rust
+(after! rustic
   (map!
    :map rustic-mode-map
    :localleader
